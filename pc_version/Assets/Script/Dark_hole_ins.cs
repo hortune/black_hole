@@ -22,7 +22,7 @@ public class Dark_hole_ins : MonoBehaviour {
             timer -= Time.deltaTime;
         else
         {
-            /*if (hole_count > 4)
+            if (hole_count > 4)
             {
                 de = GameObject.FindGameObjectsWithTag("Dark_hole");
                 int siz = de.Length;
@@ -30,7 +30,7 @@ public class Dark_hole_ins : MonoBehaviour {
                 Destroy(de[r]);
 
                 hole_count--;
-            }*/
+            }
             pos = new Vector3(Random.Range(-45f, 45f), 0.5f, Random.Range(-45f, 45f));
             while (Vector3.Distance(pos, charc.position) < 35)
                 pos = new Vector3(Random.Range(-47f, 47f), 1f, Random.Range(-47f, 47f));

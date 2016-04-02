@@ -52,5 +52,11 @@ public class Life : MonoBehaviour {
             Check_heart();
             Destroy(other.gameObject);
         }
+        if(other.gameObject.tag == "Dark_hole")
+        {
+            life--;
+            Check_heart();
+            Destroy(other.gameObject);
+        }
     }
 }
