@@ -7,12 +7,13 @@ public class Dark_hole_ins : MonoBehaviour {
     private float timer;
     private float timer_save;
     private static int hole_count;
+    public Transform charc;
 
     private GameObject[] de;
 	// Use this for initialization
 	void Start () {
-        timer = 1f;
-        timer_save = 5f;
+        timer = 0f;
+        timer_save = 2.7f;
 	}
 	
 	// Update is called once per frame
@@ -21,7 +22,7 @@ public class Dark_hole_ins : MonoBehaviour {
             timer -= Time.deltaTime;
         else
         {
-            if (hole_count > 4)
+            if (hole_count > 10)
             {
                 de = GameObject.FindGameObjectsWithTag("Dark_hole");
                 int siz = de.Length;
@@ -31,14 +32,15 @@ public class Dark_hole_ins : MonoBehaviour {
                 hole_count--;
             }
             pos = new Vector3(Random.Range(-45f, 45f), 0.5f, Random.Range(-45f, 45f));
+            while (Vector3.Distance(pos, charc.position) < 35)
+                pos = new Vector3(Random.Range(-47f, 47f), 1f, Random.Range(-47f, 47f));
             Instantiate(dark_hole, pos, Quaternion.identity);
 
             timer = timer_save;
-            if(timer_save > 1f)
-                timer_save = timer_save * 0.9f;
+            if (timer_save > 1.3f)
+                timer_save *= 0.85f;
 
             hole_count++;
         }
-
 	}
 }

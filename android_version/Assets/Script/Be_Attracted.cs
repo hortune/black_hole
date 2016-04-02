@@ -9,7 +9,10 @@ public class Be_Attracted : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        p = 400f;
+        if (rb.tag == "Me")
+            p = 80000f;
+        else
+            p = 1600f;
 	}
 	
 	// Update is called once per frame
