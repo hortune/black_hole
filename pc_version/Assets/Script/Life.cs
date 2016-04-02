@@ -4,6 +4,7 @@ using System.Collections;
 public class Life : MonoBehaviour {
     static public int life;
     public GameObject game_over;
+    public GameObject ins_control;
 
     public GameObject heart_one, heart_two, heart_three;
 	// Use this for initialization
@@ -18,6 +19,7 @@ public class Life : MonoBehaviour {
             heart_one.gameObject.SetActive(false);
             Destroy(gameObject);
             game_over.gameObject.SetActive(true);
+            ins_control.SetActive(false);
         }
         if (life == 1)
         {
@@ -45,7 +47,8 @@ public class Life : MonoBehaviour {
         }
         if(other.gameObject.tag == "Potion")
         {
-            life++;
+            if(life < 3)
+                life++;
             Check_heart();
             Destroy(other.gameObject);
         }

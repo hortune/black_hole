@@ -9,7 +9,7 @@ public class Be_Attracted : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        p = 400f;
+        p = 1600f;
 	}
 	
 	// Update is called once per frame
