@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Life : MonoBehaviour {
-    static public int life;
+    public int life;
     public GameObject game_over;
     public GameObject ins_control;
+    public Button replay;
 
     public GameObject heart_one, heart_two, heart_three;
 	// Use this for initialization
@@ -12,13 +14,42 @@ public class Life : MonoBehaviour {
         life = 3;
 	}
 
+    public void Reset()
+    {
+        life = 3;
+        revive();
+        Dark_hole_ins.hole_count = 0;
+    }
+
+    void revive()
+    {
+        heart_one.gameObject.SetActive(true);
+        heart_two.gameObject.SetActive(true);
+        heart_three.gameObject.SetActive(true);
+    }
+
     void Check_heart()
     {
         if (life == 0)
         {
             heart_one.gameObject.SetActive(false);
-            Destroy(gameObject);
+
+            GameObject[] game_obj;
+            game_obj = GameObject.FindGameObjectsWithTag("Fire_ball");
+            for (int i = 0; i < game_obj.Length; i++)
+            {
+                Destroy(game_obj[i]);
+            }
+            game_obj = GameObject.FindGameObjectsWithTag("Dark_hole");
+            for(int i=0;i<game_obj.Length;i++)
+            {
+                Destroy(game_obj[i]);
+            }
+            Score_Control.t = 0;
+
             game_over.gameObject.SetActive(true);
+            replay.gameObject.SetActive(true);
+            gameObject.SetActive(false);
             ins_control.SetActive(false);
         }
         if (life == 1)

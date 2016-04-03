@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Score_Control : MonoBehaviour {
     public Text score;
-    private float t;
+    public static float t;
 	// Use this for initialization
 	void Start () {
         score.text = "Score :";
