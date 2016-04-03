@@ -18,6 +18,10 @@ Blackhole:大綱
     *   [星星](#star)
     *   [藥水](#potion)
     *   [毒藥](#poison)
+*   [地圖](#map)
+    *   [經典方塊](#block)
+    *   [羅馬競技場](#circle)
+    *   [無邊界地圖](#no_limit)
 *   [成就系統](#achievement)
     *   [黑洞探索者](#pioneer)
     *   [火球達人](#fire_ball_pro)
@@ -47,6 +51,14 @@ Blackhole:大綱
 <h3 id="poison">毒藥</h3>
 
 * * *
+<h2 id="map">地圖</h2>
+
+
+<h3 id="block">經典方塊</h3>
+<h3 id="circle">羅馬競技場</h3>
+<h3 id="no_limit">無邊界地圖</h3>
+
+* * *
 <h2 id="achievement">成就系統</h2>
 
 
@@ -67,3 +79,5 @@ Blackhole:大綱
 
 
 <h3 id="score">分數</h3>
+
+
