@@ -19,7 +19,8 @@ public class Life : MonoBehaviour {
         life = 3;
         revive();
         Dark_hole_ins.hole_count = 0;
-        Fire_ball_ins.fire_ball_amount = 0;
+        Fire_ball_ins.fire_ball_amount = 0; //要把所有常數reset
+        fire_ball_initiate_velocity.k = 0.01f;
     }
 
     void revive()

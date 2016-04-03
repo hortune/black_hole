@@ -33,7 +33,10 @@ public class Fire_ball_ins : MonoBehaviour
             while (Vector3.Distance(pos, charc.position) < 5f)
                 pos = new Vector3(Random.Range(-47f, 47f), 1f, Random.Range(-47f, 47f));
             if (r > 1)
+            {
                 Instantiate(fire_ball, pos, Quaternion.identity);
+               // fire_ball.gameObject.AddForce(force_dir * p / r);
+            }
             else
                 Instantiate(potion, pos, Quaternion.identity);
         }
