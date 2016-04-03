@@ -51,7 +51,7 @@ public class Destroy_fireball : MonoBehaviour {
 
     void Check_D()
     {
-        if (obj_obsorb > 4)
+        if (obj_obsorb > 3)
         {
             Dark_hole_ins.hole_count--;
            // total_black_hole++;

@@ -18,7 +18,7 @@ public class Dark_hole_ins : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (timer >= 0f||hole_count> 7)
+        if (timer >= 0f||hole_count> 5)
             timer -= Time.deltaTime;
         else
         {

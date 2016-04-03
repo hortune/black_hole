@@ -30,9 +30,9 @@ public class Fire_ball_ins : MonoBehaviour
                 timer_save *= 0.85f;
             int r = Random.Range(0, 75);
             pos = new Vector3(Random.Range(-47f, 47f), 1f, Random.Range(-47f, 47f));
-          /*  while (Vector3.Distance(pos, charc.position) < 35f)
+            while (Vector3.Distance(pos, charc.position) < 5f)
                 pos = new Vector3(Random.Range(-47f, 47f), 1f, Random.Range(-47f, 47f));
-            */if (r > 1)
+            if (r > 1)
                 Instantiate(fire_ball, pos, Quaternion.identity);
             else
                 Instantiate(potion, pos, Quaternion.identity);
