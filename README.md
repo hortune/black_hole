@@ -1,4 +1,4 @@
-Black-hole
+﻿Black-hole
 ==================
 
 ![Markdown](http://markdown.tw/images/208x128.png)
@@ -18,6 +18,8 @@ Blackhole:大綱
     *   [星星](#star)
     *   [藥水](#potion)
     *   [毒藥](#poison)
+    *   [電牆](#electric_wall)
+    *   [追蹤彈](#tracking_bullet)
 *   [地圖](#map)
     *   [經典方塊](#block)
     *   [羅馬競技場](#circle)
@@ -49,6 +51,8 @@ Blackhole:大綱
 <h3 id="star">星星</h3>
 <h3 id="potion">藥水</h3>
 <h3 id="poison">毒藥</h3>
+<h3 id="electric_wall">電牆</h3>
+<h3 id="tracking_bullet">追蹤彈</h3>
 
 * * *
 <h2 id="map">地圖</h2>
