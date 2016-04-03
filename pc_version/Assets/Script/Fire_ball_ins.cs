@@ -19,6 +19,7 @@ public class Fire_ball_ins : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(fire_ball_amount);
         if (timer > 0f)
             timer -= Time.deltaTime;
         else if (fire_ball_amount <= fire_ball_amount_restrict)

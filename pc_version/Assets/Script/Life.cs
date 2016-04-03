@@ -19,6 +19,7 @@ public class Life : MonoBehaviour {
         life = 3;
         revive();
         Dark_hole_ins.hole_count = 0;
+        Fire_ball_ins.fire_ball_amount = 0;
     }
 
     void revive()

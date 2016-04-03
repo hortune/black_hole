@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Move_control : MonoBehaviour {
+public class Move_control : MonoBehaviour
+{
     private float move_cof;
     public Rigidbody me;
     public Transform mee;
     private Vector3 pos;
 
-	// Use this for initialization
-	void Start () {
-        move_cof = 20f;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+        move_cof = 1.0f;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         /*
         if (Input.GetKey(KeyCode.W))
             me.AddForce(transform.up * move_cof);
@@ -27,14 +30,9 @@ public class Move_control : MonoBehaviour {
 
         pos = mee.position;
 
-        if (Input.acceleration.y>0)
-            pos.z -= Time.deltaTime * move_cof;
-        if (Input.acceleration.x<0)
-            pos.x += Time.deltaTime * move_cof;
-        if (Input.acceleration.y<0)
-            pos.z += Time.deltaTime * move_cof;
-        if (Input.acceleration.x>0)
-            pos.x -= Time.deltaTime * move_cof;
+       
+            pos.z -= Input.acceleration.y * move_cof;
+            pos.x -= Input.acceleration.x * move_cof;
 
         mee.position = pos;
     }
