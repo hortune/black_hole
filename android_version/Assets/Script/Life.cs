@@ -21,6 +21,11 @@ public class Life : MonoBehaviour {
         Dark_hole_ins.hole_count = 0;
         Fire_ball_ins.fire_ball_amount = 0; //要把所有常數reset
         fire_ball_initiate_velocity.k = 0.01f;
+        White_hole_ins.white_hole_amount = 0;
+        White_hole_ins.timer = 5f;
+        White_hole_ins.timer_save = 5f;
+        Dark_hole_ins.timer = 5f;
+        Dark_hole_ins.timer_save = 5f;
     }
 
     void revive()
@@ -44,6 +49,16 @@ public class Life : MonoBehaviour {
             }
             game_obj = GameObject.FindGameObjectsWithTag("Dark_hole");
             for(int i=0;i<game_obj.Length;i++)
+            {
+                Destroy(game_obj[i]);
+            }
+            game_obj = GameObject.FindGameObjectsWithTag("White_hole");
+            for (int i = 0; i < game_obj.Length; i++)
+            {
+                Destroy(game_obj[i]);
+            }
+            game_obj = GameObject.FindGameObjectsWithTag("Potion");
+            for (int i = 0; i < game_obj.Length; i++)
             {
                 Destroy(game_obj[i]);
             }

@@ -4,16 +4,16 @@ using System.Collections;
 public class Dark_hole_ins : MonoBehaviour {
     public GameObject dark_hole;
     private Vector3 pos;
-    private float timer;
-    private float timer_save;
+    public static float timer;
+    public static float timer_save;
     public static int hole_count;
     public Transform charc;
 
     private GameObject[] de;
 	// Use this for initialization
 	void Start () {
-        timer = 0f;
-        timer_save = 2.7f;
+        timer = 5f;
+        timer_save = 5f;
 	}
 	
 	// Update is called once per frame
@@ -23,11 +23,9 @@ public class Dark_hole_ins : MonoBehaviour {
         else
         {
             pos = new Vector3(Random.Range(-45f, 45f), 0.5f, Random.Range(-45f, 45f));
-            //Debug.Log(charc);
             while (Vector3.Distance(pos, charc.position) < 35)
             {
                 pos = new Vector3(Random.Range(-47f, 47f), 1f, Random.Range(-47f, 47f));
-                //Debug.Log(charc.position);
             }
             Instantiate(dark_hole, pos, Quaternion.identity);
 

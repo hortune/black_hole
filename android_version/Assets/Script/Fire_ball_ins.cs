@@ -28,7 +28,7 @@ public class Fire_ball_ins : MonoBehaviour
             timer = timer_save;
             if (timer_save > 0.3f)
                 timer_save *= 0.85f;
-            int r = Random.Range(0, 75);
+            /*int r = Random.Range(0, 75);
             pos = new Vector3(Random.Range(-47f, 47f), 1f, Random.Range(-47f, 47f));
             while (Vector3.Distance(pos, charc.position) < 5f)
                 pos = new Vector3(Random.Range(-47f, 47f), 1f, Random.Range(-47f, 47f));
@@ -39,6 +39,15 @@ public class Fire_ball_ins : MonoBehaviour
             }
             else
                 Instantiate(potion, pos, Quaternion.identity);
+            */
+            int r = Random.Range(0, 75);
+            if (r > 1)
+            {
+                Instantiate(fire_ball, gameObject.transform.position, Quaternion.identity);
+                // fire_ball.gameObject.AddForce(force_dir * p / r);
+            }
+            else
+                Instantiate(potion, gameObject.transform.position, Quaternion.identity);
         }
     }
 }
