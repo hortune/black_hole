@@ -2,52 +2,66 @@
 using System.Collections;
 public class Fire_ball_ins : MonoBehaviour
 {
-    public GameObject fire_ball, potion;
+    public GameObject fire_ball;
+    public GameObject potion;
+    public GameObject venom;
+    public GameObject star;
+
     public Transform charc;
-    private float timer, timer_save;
+    public float timer, timer_save;
     private Vector3 pos;
-    public static int fire_ball_amount_restrict = 50;
-    public static int fire_ball_amount = 0;
+    public static int fire_ball_amount_restrict;
+    public static int fire_ball_amount;
     // Use this for initialization
     void Start()
     {
+        fire_ball_amount_restrict = 20;
         fire_ball_amount = 0;
         timer = 0.5f;
-        timer_save = 1f;
-
+        timer_save = 2f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer > 0f)
+        if (timer > 0f && fire_ball_amount <= fire_ball_amount_restrict)
             timer -= Time.deltaTime;
-        else if (fire_ball_amount <= fire_ball_amount_restrict)
+        else
         {
+            GameObject tmp;
+            Rigidbody tmp_rb;
+
             fire_ball_amount++;
             timer = timer_save;
+
             if (timer_save > 0.3f)
                 timer_save *= 0.85f;
-            /*int r = Random.Range(0, 75);
-            pos = new Vector3(Random.Range(-47f, 47f), 1f, Random.Range(-47f, 47f));
-            while (Vector3.Distance(pos, charc.position) < 5f)
-                pos = new Vector3(Random.Range(-47f, 47f), 1f, Random.Range(-47f, 47f));
-            if (r > 1)
+
+            int r = Random.Range(0, 100);
+            if (100 >= r && r > 28)
             {
-                Instantiate(fire_ball, pos, Quaternion.identity);
-               // fire_ball.gameObject.AddForce(force_dir * p / r);
+                tmp = Instantiate(fire_ball, gameObject.transform.position, Quaternion.identity) as GameObject;
+                tmp_rb = tmp.GetComponent<Rigidbody>();
+                tmp_rb.AddForce(new Vector3(Random.Range(100, 200f), 0f, Random.Range(100, 200f)));
+            }
+            else if (28 >= r && r > 14)
+            {
+                tmp = Instantiate(star, gameObject.transform.position, Quaternion.identity) as GameObject;
+                tmp_rb = tmp.GetComponent<Rigidbody>();
+                tmp_rb.AddForce(new Vector3(Random.Range(100, 200f), 0f, Random.Range(100, 200f)));
+            }
+            else if (14 >= r && r > 7)
+            {
+                tmp = Instantiate(venom, gameObject.transform.position, Quaternion.identity) as GameObject;
+                tmp_rb = tmp.GetComponent<Rigidbody>();
+                tmp_rb.AddForce(new Vector3(Random.Range(100, 200f), 0f, Random.Range(100, 200f)));
             }
             else
-                Instantiate(potion, pos, Quaternion.identity);
-            */
-            int r = Random.Range(0, 75);
-            if (r > 1)
             {
-                Instantiate(fire_ball, gameObject.transform.position, Quaternion.identity);
-                // fire_ball.gameObject.AddForce(force_dir * p / r);
+                tmp = Instantiate(potion, gameObject.transform.position, Quaternion.identity) as GameObject;
+                tmp_rb = tmp.GetComponent<Rigidbody>();
+                tmp_rb.AddForce(new Vector3(Random.Range(100, 200f), 0f, Random.Range(100, 200f)));
             }
-            else
-                Instantiate(potion, gameObject.transform.position, Quaternion.identity);
         }
     }
 }

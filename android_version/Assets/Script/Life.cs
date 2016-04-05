@@ -6,7 +6,10 @@ public class Life : MonoBehaviour {
     public int life;
     public GameObject game_over;
     public GameObject ins_control;
-    public Button replay;
+    public GameObject me;
+
+    public GameObject main_camera;
+    public GameObject canvas;
 
     public GameObject heart_one, heart_two, heart_three;
 	// Use this for initialization
@@ -18,14 +21,16 @@ public class Life : MonoBehaviour {
     {
         life = 3;
         revive();
-        Dark_hole_ins.hole_count = 0;
-        Fire_ball_ins.fire_ball_amount = 0; //要把所有常數reset
-        fire_ball_initiate_velocity.k = 0.01f;
-        White_hole_ins.white_hole_amount = 0;
-        White_hole_ins.timer = 5f;
-        White_hole_ins.timer_save = 5f;
-        Dark_hole_ins.timer = 5f;
-        Dark_hole_ins.timer_save = 5f;
+        me.SetActive(true);
+        ins_control.SetActive(true);
+        game_over.SetActive(false);
+        Hole_ins hole_ins;
+        hole_ins = ins_control.GetComponent<Hole_ins>();
+        hole_ins.Start();
+
+        canvas.SetActive(false);
+        main_camera.transform.position = me.transform.position + new Vector3(0f, 50f, 0f);
+        main_camera.transform.parent = me.transform;
     }
 
     void revive()
@@ -35,39 +40,56 @@ public class Life : MonoBehaviour {
         heart_three.gameObject.SetActive(true);
     }
 
+    void charc_die()
+    {
+        GameObject[] game_obj;
+        game_obj = GameObject.FindGameObjectsWithTag("Fire_ball");
+        for (int i = 0; i < game_obj.Length; i++)
+        {
+            Destroy(game_obj[i]);
+        }
+        game_obj = GameObject.FindGameObjectsWithTag("Dark_hole");
+        for (int i = 0; i < game_obj.Length; i++)
+        {
+            Destroy(game_obj[i]);
+        }
+        game_obj = GameObject.FindGameObjectsWithTag("White_hole");
+        for (int i = 0; i < game_obj.Length; i++)
+        {
+            Destroy(game_obj[i]);
+        }
+        game_obj = GameObject.FindGameObjectsWithTag("Potion");
+        for (int i = 0; i < game_obj.Length; i++)
+        {
+            Destroy(game_obj[i]);
+        }
+        game_obj = GameObject.FindGameObjectsWithTag("Star");
+        for (int i = 0; i < game_obj.Length; i++)
+        {
+            Destroy(game_obj[i]);
+        }
+        game_obj = GameObject.FindGameObjectsWithTag("Venom");
+        for (int i = 0; i < game_obj.Length; i++)
+        {
+            Destroy(game_obj[i]);
+        }
+        Score_Control.score = 0;
+
+        game_over.gameObject.SetActive(true);
+        me.SetActive(false);
+        ins_control.SetActive(false);
+        canvas.SetActive(true);
+        main_camera.transform.position = new Vector3(30f, 90f, 0f);
+        main_camera.transform.parent = null;
+    }
+
     void Check_heart()
     {
         if (life == 0)
         {
             heart_one.gameObject.SetActive(false);
 
-            GameObject[] game_obj;
-            game_obj = GameObject.FindGameObjectsWithTag("Fire_ball");
-            for (int i = 0; i < game_obj.Length; i++)
-            {
-                Destroy(game_obj[i]);
-            }
-            game_obj = GameObject.FindGameObjectsWithTag("Dark_hole");
-            for(int i=0;i<game_obj.Length;i++)
-            {
-                Destroy(game_obj[i]);
-            }
-            game_obj = GameObject.FindGameObjectsWithTag("White_hole");
-            for (int i = 0; i < game_obj.Length; i++)
-            {
-                Destroy(game_obj[i]);
-            }
-            game_obj = GameObject.FindGameObjectsWithTag("Potion");
-            for (int i = 0; i < game_obj.Length; i++)
-            {
-                Destroy(game_obj[i]);
-            }
-            Score_Control.t = 0;
-
-            game_over.gameObject.SetActive(true);
-            replay.gameObject.SetActive(true);
-            gameObject.SetActive(false);
-            ins_control.SetActive(false);
+            charc_die();
         }
         if (life == 1)
         {
@@ -100,9 +122,16 @@ public class Life : MonoBehaviour {
             Check_heart();
             Destroy(other.gameObject);
         }
-        if(other.gameObject.tag == "Dark_hole")
+        if(other.gameObject.tag == "Venom")
         {
             life--;
+            Score_Control.score--;
+            Check_heart();
+            Destroy(other.gameObject);
+        }
+        if(other.gameObject.tag == "Star")
+        {
+            Score_Control.score += 3;
             Check_heart();
             Destroy(other.gameObject);
         }

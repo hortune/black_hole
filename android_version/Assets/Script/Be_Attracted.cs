@@ -9,21 +9,22 @@ public class Be_Attracted : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        /*
         if (rb.tag == "Me")
             p = 80000f;
         else
-            p = 1600f;
+        */
+            p = 100f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         Dark_hole = GameObject.FindGameObjectsWithTag("Dark_hole");
         int siz = Dark_hole.Length;
-
         for(int i=0;i< siz;i++)
         {
             force_dir = Dark_hole[i].transform.position - transform.position;
-            float r = force_dir.magnitude * force_dir.magnitude * force_dir.magnitude;
+            float r = force_dir.magnitude * force_dir.magnitude /* force_dir.magnitude*/;
             rb.AddForce(force_dir * p / r);
         }
 	}
